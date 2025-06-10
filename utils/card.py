@@ -19,7 +19,7 @@ class Symbol:
 class Card(Symbol):
 
     def __init__(self, icon: IconType, value: ValueType):
-        Symbol.__init__(self, icon)
+        super().__init__(icon)
         self.value = value
 
     def __str__(self) -> str:

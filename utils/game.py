@@ -1,7 +1,7 @@
 from typing import List
 
-from player import Player
-from card import Deck, Card
+from utils.player import Player
+from utils.card import Deck, Card
 
 class Board:
     def __init__(self, players: List['Player']):
@@ -25,7 +25,7 @@ class Board:
 
     
     def play_turn(self):
-
+        self.active_cards = []
         for player in self.players:
             card_played = player.play()
             if card_played:
@@ -37,16 +37,6 @@ class Board:
                 break
         if not self.game_over:
             self.turn_count += 1
-            self.active_cards = []
             print(f"{self}")
         
 
-names = ['Cat',"E", "Ri", "Na", "X"]
-players = []
-for name in names:
-    players.append(Player(name))
-b = Board(players)
-print(b)
-b.start_game()
-while not b.game_over:
-    b.play_turn()
