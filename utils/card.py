@@ -1,4 +1,8 @@
 from typing import Literal, List
+import random
+import numpy as np
+
+# from player import Player
 
 IconType = Literal['♥', '♦', '♣', '♠']
 ValueType = Literal['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -19,7 +23,7 @@ class Card(Symbol):
         self.value = value
 
     def __str__(self) -> str:
-        return f"The card {self.value} {self.icon} "
+        return f"{self.value} {self.icon} {self.color} "
 
 class Deck:
 
@@ -41,4 +45,25 @@ class Deck:
         for value in values:
             for icon in icons:
                 self.cards.append(Card(icon, value))
+    
+    def shuffle(self):
+        random.shuffle(self.cards)
+    
+    # Todo Player type
+    def distribute(self, players):
+        num_players = len(players)
+        num_cards = len(self.cards)
+        remainder = num_cards % num_players
+        if remainder != 0:
+            print(f"Removing {remainder} card(s) to ensure equal distribution.")
+            self.cards = self.cards[:-remainder]
+        cards_per_player = np.array_split(self.cards, len(players))
+        for player, cards in zip(players, cards_per_player):
+            player.give_cards(list(cards))
+        
+
+
+
+
+
         
