@@ -27,9 +27,16 @@ class Deck:
                 self.cards.append(Card(icon, value))
     
     def shuffle(self):
+        """Shuffle the deck of cards."""
         random.shuffle(self.cards)
     
     def distribute(self, players: List[Player]):
+        """
+        Distribute cards to players.
+        Ensures that each player gets an equal number of cards.
+        If the number of cards is not divisible by the number of players,
+        it removes the excess cards to ensure equal distribution.
+        """
         num_players = len(players)
         num_cards = len(self.cards)
         remainder = num_cards % num_players

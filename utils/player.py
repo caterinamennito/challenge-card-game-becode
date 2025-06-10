@@ -5,7 +5,7 @@ import random
 class Player:
     def __init__(self, name: str):
         self.name = name
-        self.cards: List[Card ] = []
+        self.cards: List[Card] = []
         self.turn_count = 0
         self.history: List[Card] = []
     
@@ -16,6 +16,7 @@ class Player:
         return f"{cards_str}, {self.turn_count}, {history_str}"
     
     def play(self) -> Card | None:
+        """Play a card from the player's hand."""
         if len(self.cards) == 0:
             print('No more cards to play')
             return None
@@ -27,5 +28,6 @@ class Player:
         return card_to_play
 
     def give_cards(self, cards:List[Card]):
+        """Give cards to the player."""
         self.cards = cards
         print(f"Player {self.name} has {len(self.cards)} cards: {self}")

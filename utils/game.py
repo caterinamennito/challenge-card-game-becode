@@ -19,6 +19,7 @@ class Board:
         return f"Board with {len(self.players)} players, turn count: {self.turn_count}, active cards: {active_cards_str}, history cards: {history_cards_str}"
     
     def start_game(self):
+        """Start the game by filling, shuffling, and distributing the deck."""
         d = Deck()
         d.fill_deck()
         d.shuffle()
@@ -26,6 +27,7 @@ class Board:
 
     
     def play_turn(self):
+        """Play a turn for each player."""
         self.active_cards = []
         for player in self.players:
             card_played = player.play()
