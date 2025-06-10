@@ -5,9 +5,9 @@ import random
 class Player:
     def __init__(self, name: str):
         self.name = name
-        self.cards: List['Card' | None] = []
+        self.cards: List[Card ] = []
         self.turn_count = 0
-        self.history: List['Card'| None] = []
+        self.history: List[Card] = []
     
     def __str__(self) -> str:
         cards_str = [str(card) for card in self.cards]
@@ -26,6 +26,6 @@ class Player:
         print(f"Player {self.name} turn {self.turn_count} played {card_to_play.value} {card_to_play.icon} {card_to_play.color}")
         return card_to_play
 
-    def give_cards(self, cards:List['Card']):
+    def give_cards(self, cards:List[Card]):
         self.cards = cards
         print(f"Player {self.name} has {len(self.cards)} cards: {self}")

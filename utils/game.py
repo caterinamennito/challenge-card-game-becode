@@ -1,7 +1,8 @@
 from typing import List
 
 from utils.player import Player
-from utils.card import Deck, Card
+from utils.card import Card
+from utils.deck import Deck
 
 class Board:
     def __init__(self, players: List['Player']):
